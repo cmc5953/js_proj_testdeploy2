@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dream Team</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body class = "hero">
+  <div class="container">
+    <!-- HEADER ------------------------------------------------------------------------------------->
+    <div class="row">
+      <div class="text-center">
+        <h1 style="color: white;">Your Dream Team</h1>
+        <p style="color: white; font-size: large;">Select your favorite players to make up the best team, but be careful not to exceed the salary cap of $500M!</p>
+        <br>
+      </div>
+    </div>
+    <!-- DROPDOWNS ------------------------------------------------------------------------------------->
+    <div class="row">
+
+      <div class="col-md-3 col-sm-6">
+        <div class="well">
+          <h4>Goalkeepers:</h4>
+          <select class = "selection" id="selDatasetGK">
+            <option value="Null" selected>Choose Player</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="well">
+          <h4>Defenders:</h4>
+          <select class = "selection" id="selDatasetDEF">
+            <option value="Null" selected>Choose Player</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <div class="well">
+          <h4>Midfielders:</h4>
+          <select class = "selection" id="selDatasetMID">
+            <option value="Null" selected>Choose Player</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="col-md-3 col-sm-6">
+        <div class="well">
+          <h4>Forwards:</h4>
+          <select class = "selection" id="selDatasetFWD">
+            <option value="Null" selected>Choose Player</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- INFO, BUTTONS, TABLE ------------------------------------------------------------------------->
+    <div class="row">
+      
+      <!-- PIE PLOT -->
+      <div class="col-md-5 col-sm-9">
+        <div class="well">
+          <div id="pie-plot"></div>
+          <canvas id="myChart" width="300" height="320"></canvas>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="col-md-2 col-sm-3">
+        <div class="well">
+          <h4>Player Info</h4>
+          <div id="playerInfo">
+            <dl>Select a player<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></dl>
+            <br><br>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SPIDER PLOT -->
+      <div class="col-md-5 col-sm-12">
+        <div class="well">
+          <div id="spider-plot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- BUTTONS -->
+      <div class="col-md-2 col-sm-3">
+        <div class="well">
+          <div class="button-class">
+            &nbsp; Add &nbsp;&nbsp; Delete<br>
+            <button id="add-GK" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">GK</button>
+            <button id="del-GK" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">GK</button>
+            <br>
+            <button id="add-DEF1" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">DEF1</button>
+            <button id="del-DEF1" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">DEF1</button>
+            <br>
+            <button id="add-DEF2" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">DEF2</button>
+            <button id="del-DEF2" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">DEF2</button>
+            <br>
+            <button id="add-DEF3" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">DEF3</button>
+            <button id="del-DEF3" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">DEF3</button>
+            <br>
+            <button id="add-DEF4" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">DEF4</button>
+            <button id="del-DEF4" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">DEF4</button>
+            <br>
+            <button id="add-MID1" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">MID1</button>
+            <button id="del-MID1" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">MID1</button>
+            <br>
+            <button id="add-MID2" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">MID2</button>
+            <button id="del-MID2" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">MID2</button>
+            <br>
+            <button id="add-MID3" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">MID3</button>
+            <button id="del-MID3" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">MID3</button>
+            <br>
+            <button id="add-MID4" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">MID4</button>
+            <button id="del-MID4" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">MID4</button>
+            <br>
+            <button id="add-FWD1" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">FWD1</button>
+            <button id="del-FWD1" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">FWD1</button>
+            <br>
+            <button id="add-FWD2" type="button" class="btn add" style="padding: 0px 0px; font-size: 10px;">FWD2</button>
+            <button id="del-FWD2" type="button" class="btn del" style="padding: 0px 0px; font-size: 10px;">FWD2</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="col-md-10 col-sm-9">
+        <div class="well">
+          <table class="table">
+
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Age</th>
+                <th>Club</th>
+                <th>Height</th>
+                <th>Name</th>
+                <th>Nationality</th>
+                <th>Overall</th>
+                <th>Position</th>
+                <th>Potential</th>
+                <th>Value</th>
+                <th>Weight</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr id="GK">
+                <td>GK</td>
+              </tr>
+              <tr id="DEF1">
+                <td>DEF1</td>
+              </tr>
+              <tr id="DEF2">
+                <td>DEF2</td>
+              </tr>
+              <tr id="DEF3">
+                <td>DEF3</td>
+              </tr>
+              <tr id="DEF4">
+                <td>DEF4</td>
+              </tr>
+              <tr id="MID1">
+                <td>MID1</td>
+              </tr>
+              <tr id="MID2">
+                <td>MID2</td>
+              </tr>
+              <tr id="MID3">
+                <td>MID3</td>
+              </tr>
+              <tr id="MID4">
+                <td>MID4</td>
+              </tr>
+              <tr id="FWD1">
+                <td>FWD1</td>
+              </tr>
+              <tr id="FWD2">
+                <td>FWD2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  
+  </div>
+
+  <!-- CANVAS -->
+  <!-- <canvas id="myChart"></canvas> -->
+  
+  <!-- CHART -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <!-- D3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+
+  <!-- PLOT -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- JS -->
+  <script src="app3.js"></script>
+
+</body>
+
+</html>
